@@ -1,8 +1,9 @@
 (function() {
-  // Create chatbot button
+  // --- Create chatbot button ---
   const chatBtn = document.createElement('button');
   chatBtn.id = 'vaaChatBtn';
   chatBtn.innerHTML = '<i style="font-size:20px" class="fa fa-comments"></i>';
+
   Object.assign(chatBtn.style, {
     position: 'fixed',
     bottom: '25px',
@@ -19,17 +20,13 @@
     boxShadow: '0 3px 10px rgba(0,0,0,0.3)',
     zIndex: '9999',
     cursor: 'pointer',
-    transition: 'all 0.3s ease',
+    transition: 'all 0.3s ease'
   });
 
-  chatBtn.addEventListener('mouseenter', () => {
-    chatBtn.style.backgroundColor = '#0056b3';
-  });
-  chatBtn.addEventListener('mouseleave', () => {
-    chatBtn.style.backgroundColor = '#007bff';
-  });
+  chatBtn.addEventListener('mouseenter', () => chatBtn.style.backgroundColor = '#0056b3');
+  chatBtn.addEventListener('mouseleave', () => chatBtn.style.backgroundColor = '#007bff');
 
-  // Create chatbot popup
+  // --- Create chatbot popup ---
   const chatBox = document.createElement('div');
   chatBox.id = 'vaaChatBox';
   Object.assign(chatBox.style, {
@@ -43,10 +40,10 @@
     borderRadius: '10px',
     boxShadow: '0 5px 20px rgba(0,0,0,0.3)',
     overflow: 'hidden',
-    zIndex: '10000',
+    zIndex: '10000'
   });
 
-  // Chat header
+  // --- Chat header ---
   const header = document.createElement('div');
   Object.assign(header.style, {
     background: '#007bff',
@@ -55,33 +52,30 @@
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    fontWeight: '500',
+    fontWeight: '500'
   });
+
   header.innerHTML = `
     <span>VAA Chatbot</span>
-    <button id="vaaCloseBtn" 
-      style="background:none;border:none;color:white;font-size:20px;cursor:pointer;">
-      &times;
-    </button>
+    <button id="vaaCloseBtn" style="background:none;border:none;color:white;font-size:20px;cursor:pointer;">&times;</button>
   `;
 
-  // Chat iframe
+  // --- Chat iframe ---
   const iframe = document.createElement('iframe');
   iframe.src = 'https://vaa-official.github.io/script/';
   Object.assign(iframe.style, {
     width: '100%',
     height: 'calc(100% - 45px)',
-    border: 'none',
+    border: 'none'
   });
 
+  // --- Assemble elements ---
   chatBox.appendChild(header);
   chatBox.appendChild(iframe);
-
-  // Add to document
   document.body.appendChild(chatBtn);
   document.body.appendChild(chatBox);
 
-  // Button open/close logic
+  // --- Button logic ---
   chatBtn.addEventListener('click', () => {
     chatBox.style.display = chatBox.style.display === 'block' ? 'none' : 'block';
   });
