@@ -1,5 +1,5 @@
 (function () {
-  // Create chatbot button
+  // --- Chat Button ---
   const chatBtn = document.createElement('button');
   chatBtn.id = 'vaaChatBtn';
   chatBtn.innerHTML = '<i style="font-size:20px" class="fa fa-comments"></i>';
@@ -25,7 +25,7 @@
   chatBtn.addEventListener('mouseenter', () => chatBtn.style.backgroundColor = '#0056b3');
   chatBtn.addEventListener('mouseleave', () => chatBtn.style.backgroundColor = '#007bff');
 
-  // Create chatbot popup
+  // --- Chat Box ---
   const chatBox = document.createElement('div');
   chatBox.id = 'vaaChatBox';
   Object.assign(chatBox.style, {
@@ -42,7 +42,7 @@
     zIndex: '10000',
   });
 
-  // Header
+  // --- Header ---
   const header = document.createElement('div');
   header.style.background = '#007bff';
   header.style.color = '#fff';
@@ -56,9 +56,9 @@
     <button id="vaaCloseBtn" style="background:none;border:none;color:white;font-size:20px;cursor:pointer;">&times;</button>
   `;
 
-  // Chat iframe
+  // --- Iframe (your chatbot) ---
   const iframe = document.createElement('iframe');
-  iframe.src = 'https://vaa-official.github.io/script/';
+  iframe.src = 'https://vaa-official.github.io/script/'; // this loads your chatbot
   Object.assign(iframe.style, {
     width: '100%',
     height: 'calc(100% - 45px)',
@@ -68,14 +68,15 @@
   chatBox.appendChild(header);
   chatBox.appendChild(iframe);
 
-  // Add to page
+  // --- Add to page ---
   document.body.appendChild(chatBtn);
   document.body.appendChild(chatBox);
 
-  // Button actions
+  // --- Logic ---
   chatBtn.addEventListener('click', () => {
     chatBox.style.display = 'block';
   });
+
   header.querySelector('#vaaCloseBtn').addEventListener('click', () => {
     chatBox.style.display = 'none';
   });
